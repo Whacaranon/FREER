@@ -3423,7 +3423,7 @@ end)
                                 elseif game:GetService("ReplicatedStorage"):FindFirstChild("Diablo [Lv. 1750]") then
                                     topos(game:GetService("ReplicatedStorage"):FindFirstChild("Diablo [Lv. 1750]").HumanoidRootPart.CFrame * CFrame.new(5,16,7))
                                 elseif game:GetService("ReplicatedStorage"):FindFirstChild("Deandre [Lv. 1750]") then
-                                    topos(game:GetService("ReplicatedStorage"):FindFirstChild("Deandre [Lv. 1750]]").HumanoidRootPart.CFrame * CFrame.new(5,16,7))
+                                    topos(game:GetService("ReplicatedStorage"):FindFirstChild("Deandre [Lv. 1750]").HumanoidRootPart.CFrame * CFrame.new(5,16,7))
                             end
                         end
                     end
