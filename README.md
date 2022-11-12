@@ -2082,24 +2082,24 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
     end)
     
     local ScreenGui = Instance.new("ScreenGui")
-    local Toggle = Instance.new("TextButton")
+local ImageButton = Instance.new("ImageButton")
+
+
+ScreenGui.Parent = game.CoreGui
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+ImageButton.Parent = ScreenGui
+ImageButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+ImageButton.BorderSizePixel = 0
+ImageButton.Position = UDim2.new(0.120833337, 0, 0.0952890813, 0)
+ImageButton.Size = UDim2.new(0, 50, 0, 50)
+ImageButton.Draggable = true
+ImageButton.Image = "http://www.roblox.com/asset/?id=11538629932"
+ImageButton.MouseButton1Down:connect(function()
+game:GetService("VirtualInputManager"):SendKeyEvent(true,305,false,game)
+ game:GetService("VirtualInputManager"):SendKeyEvent(false,305,false,game)
+end)
     
-    ScreenGui.Name = "ScreenGui"
-    ScreenGui.Parent = game.CoreGui
-    
-    Toggle.Name = "Toggle"
-    Toggle.Parent = ScreenGui
-    Toggle.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
-    Toggle.Position = UDim2.new(0.120833337, 0, 0.0952890813, 0)
-    Toggle.Size = UDim2.new(0, 40, 0, 40)
-    Toggle.Font = Enum.Font.Code
-    Toggle.Text = "ไม่มีชื่อ"
-    Toggle.TextColor3 = Color3.fromRGB(0, 0, 180)
-    Toggle.TextScaled = true
-    Toggle.MouseButton1Down:connect(function()
-        game:GetService("VirtualInputManager"):SendKeyEvent(true,305,false,game)
-        game:GetService("VirtualInputManager"):SendKeyEvent(false,305,false,game)
-    end)
     --------------------------------------------------------------------
     local RenUi = library:AddWindow("ไม่มีชื่อ | BF",Enum.KeyCode.RightControl)
     --------------------------------------------------------------------
@@ -2111,7 +2111,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
     local DevilFruit = RenUi:AddTab("Devil Fruit","7044233235")
     local Shop = RenUi:AddTab("Shop","6031265976")
     local Misc = RenUi:AddTab("Misc","6034509993")
-    local ko = RenUi:AddTab("ควย","11537076182")
+    local ko = RenUi:AddTab("ทำเล่น","11537076182")
     --------------------------------------------------------------------
     Main:AddSeperator("Settings")
     
@@ -3731,13 +3731,58 @@ end)
         end
     end)
     
-    ko:AddButton("click me :/",function()
+    ko:AddButton("click me :)",function()
     game:GetService("StarterGui"):SetCore("SendNotification", {
                             Icon = "rbxassetid://11537076182";
                             Title = "ไอแก่", 
                             Text = "กดหาแม่มึงอ่อควยไอสัสแก่"
                         })
     end)
+    
+    ko:AddButton("เสกเวล [ออกเวลหาย]",function()
+    local plr = game:GetService("Players").LocalPlayer
+local Notification = require(game:GetService("ReplicatedStorage").Notification)
+local Data = plr:WaitForChild("Data")
+local EXPFunction = require(game.ReplicatedStorage:WaitForChild("EXPFunction"))
+local LevelUp = require(game:GetService("ReplicatedStorage").Effect.Container.LevelUp)
+local Sound = require(game:GetService("ReplicatedStorage").Util.Sound)
+local LevelUpSound = game:GetService("ReplicatedStorage").Util.Sound.Storage.Other:FindFirstChild("LevelUp_Proxy") or game:GetService("ReplicatedStorage").Util.Sound.Storage.Other:FindFirstChild("LevelUp")
+function v129(p15)
+    local v130 = p15;
+    while true do
+        local v131, v132 = string.gsub(v130, "^(-?%d+)(%d%d%d)", "%1,%2");
+        v130 = v131;
+        if v132 == 0 then
+            break;
+        end;
+    end;
+    return v130;
+end;
+
+Notification.new("<Color=Yellow>QUEST COMPLETED!<Color=/>"):Display()
+Notification.new("Earned <Color=Yellow>1,000,000,000,000 Exp.<Color=/> (+ None)"):Display()
+Notification.new("Earned <Color=Green>$25,000<Color=/>"):Display()
+plr.Data.Exp.Value = 999999999999
+plr.Data.Beli.Value = plr.Data.Beli.Value + 25000
+
+delay = 0
+count = 0
+while plr.Data.Exp.Value - EXPFunction(Data.Level.Value) > 0 do
+    plr.Data.Exp.Value = plr.Data.Exp.Value - EXPFunction(Data.Level.Value)
+    plr.Data.Level.Value = plr.Data.Level.Value + 1
+    plr.Data.Points.Value = plr.Data.Points.Value + 3
+    LevelUp({ plr })
+    Sound.Play(Sound, LevelUpSound.Value)
+    Notification.new("<Color=Green>LEVEL UP!<Color=/> (" .. plr.Data.Level.Value .. ")"):Display()
+    count = count + 1
+    if count >= 5 then
+        delay = tick()
+        count = 0
+        wait()
+    end
+end
+end)
+    
     
     Main:AddToggle("Auto Farm Observation Hop",_G.AutoObservation_Hop,function(value)
         _G.AutoObservation_Hop = value
