@@ -337,7 +337,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
                     TweenService:Create(
                         PageButton,
                         TweenInfo.new(0.3,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
-                        {TextColor3 = Color3.fromRGB(255,0,0)}
+                        {TextColor3 = Color3.fromRGB(255,0,255)}
                     ):Play()
                 end
             end)
@@ -346,7 +346,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
                 TweenService:Create(
                     PageButton,
                     TweenInfo.new(0.3,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
-                    {TextColor3 = Color3.fromRGB(255,0,0)}
+                    {TextColor3 = Color3.fromRGB(255,0,255)}
                 ):Play()
                 for i,v in next, TabFolder:GetChildren() do 
                     if v.Name == "MainTab" then
@@ -391,7 +391,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
                     TweenService:Create(
                         Button,
                         TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
-                        {TextColor3 = Color3.fromRGB(255,0,0)}
+                        {TextColor3 = Color3.fromRGB(255,255,0)}
                     ):Play()
                 end)
                 
@@ -832,7 +832,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
     
                 Bar.Name = "Bar"
                 Bar.Parent = Bar1
-                Bar.BackgroundColor3 = Color3.fromRGB(255,0,0)
+                Bar.BackgroundColor3 = Color3.fromRGB(0,255,0)
                 Bar.Size = UDim2.new(set/max, 0, 0, 5)
     
                 UICorner_2.CornerRadius = UDim.new(0, 100)
@@ -930,7 +930,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
     
                 Sep2.Name = "Sep2"
                 Sep2.Parent = Seperator
-                Sep2.BackgroundColor3 = Color3.fromRGB(255,0,0)
+                Sep2.BackgroundColor3 = Color3.fromRGB(0,0,255)
                 Sep2.BorderSizePixel = 0
                 Sep2.Position = UDim2.new(0, 305, 0, 10)
                 Sep2.Size = UDim2.new(0, 150, 0, 1)
@@ -948,7 +948,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
     
                 Linee.Name = "Linee"
                 Linee.Parent = Line
-                Linee.BackgroundColor3 = Color3.fromRGB(255,0,0)
+                Linee.BackgroundColor3 = Color3.fromRGB(0,255,0)
                 Linee.BorderSizePixel = 0
                 Linee.Position = UDim2.new(0, 0, 0, 10)
                 Linee.Size = UDim2.new(0, 455, 0, 1)
@@ -2091,10 +2091,10 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
     Toggle.Parent = ScreenGui
     Toggle.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
     Toggle.Position = UDim2.new(0.120833337, 0, 0.0952890813, 0)
-    Toggle.Size = UDim2.new(0, 50, 0, 50)
+    Toggle.Size = UDim2.new(0, 40, 0, 40)
     Toggle.Font = Enum.Font.Code
     Toggle.Text = "ไม่มีชื่อ"
-    Toggle.TextColor3 = Color3.fromRGB(255, 0, 0)
+    Toggle.TextColor3 = Color3.fromRGB(0, 0, 180)
     Toggle.TextScaled = true
     Toggle.MouseButton1Down:connect(function()
         game:GetService("VirtualInputManager"):SendKeyEvent(true,305,false,game)
@@ -2111,6 +2111,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
     local DevilFruit = RenUi:AddTab("Devil Fruit","7044233235")
     local Shop = RenUi:AddTab("Shop","6031265976")
     local Misc = RenUi:AddTab("Misc","6034509993")
+    local ko = RenUi:AddTab("ควย","11537076182")
     --------------------------------------------------------------------
     Main:AddSeperator("Settings")
     
@@ -3728,6 +3729,14 @@ end)
                 end
             end)
         end
+    end)
+    
+    ko:AddButton("click me :/",function()
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+                            Icon = "rbxassetid://11537076182";
+                            Title = "ไอแก่", 
+                            Text = "กดหาแม่มึงอ่อควยไอสัสแก่"
+                        })
     end)
     
     Main:AddToggle("Auto Farm Observation Hop",_G.AutoObservation_Hop,function(value)
